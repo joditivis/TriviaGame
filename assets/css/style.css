@@ -14,7 +14,7 @@ h1 {
     font-family: 'Lobster', cursive;
 }
 
-#start-button {
+#start-button, #done-button {
     font-family: 'Lobster', cursive;
     color: #fff9e9;
     font-size: 200%;
@@ -25,4 +25,10 @@ h1 {
 }
 p {
     color: #fff9e9;
+}
+
+/*tags from javascript*/
+#question {
+    font-size: 18px;
+
 }
