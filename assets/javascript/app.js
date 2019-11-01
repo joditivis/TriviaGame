@@ -135,8 +135,8 @@ var gameQuestions = [{
     function decrement() {
         timerNumber--;
 
-        var timeConverted = time_converter();
-        $("#timer").text(timeConverted);
+        var timeConverted = time_converter(timerNumber);
+        $("#timer").html('<h2>Time: ' + timeConverted + '</h2>');
 
         if (timerNumber === 0) {
             stopGame();
@@ -144,12 +144,20 @@ var gameQuestions = [{
         }
     }
 
+    function time_converter(t) { 
+      var minutes = Math.floor(t / 60);
+      var seconds = t - (minutes * 60);
 
-    var timeConverted = time_converter(num);
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+    
+      if (minutes === 0) {
+        minutes = "00";
+      } else if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
 
-    function time_converter(num) { 
-      var minutes = Math.floor(num / 60);  
-      var seconds = num % 60;
       return minutes + ":" + seconds;         
 }
 
