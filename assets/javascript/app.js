@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+var correctChoice;
+var userChoice;
 var rightAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
@@ -81,6 +83,8 @@ var gameQuestions = [{
             correctAnswer: 2 // germany is at index 2
         }];
 
+    
+//// START OF MAIN GAME FUNCTION
     $("#start-button").on("click", function() {
 
         //hides start page and start button after clicked
@@ -96,7 +100,7 @@ var gameQuestions = [{
         //adds the following words to screen when start button is pressed
         questionsPageOpener.append('<h3>Answer the following questions:</h3>');
 
-    //loops and prints all of the questions in the array
+    //loops and prints all of the questions from the array
         for (var i = 0; i < gameQuestions.length; i++) {
 
             //this displays all questions to the page
@@ -109,20 +113,25 @@ var gameQuestions = [{
             var answer4 = gameQuestions[i].answerChoices[3];
 
             //this displays all answer options to page and displays them with a selector
-            questionsPage.append("<input type='radio' name='answers' value='0'>" + "<label>" + answer1 + "</label>");
-            questionsPage.append("<input type='radio' name='answers' value='0'>" + "<label>" + answer2 + "</label>");
-            questionsPage.append("<input type='radio' name='answers' value='0'>" + "<label>" + answer3 + "</label>");
-            questionsPage.append("<input type='radio' name='answers' value='0'>" + "<label>" + answer4 + "</label>");
+            questionsPage.append("<input type='radio' name='choices' value='0'>" + answer1 + "<br>");
+            questionsPage.append("<input type='radio' name='choices' value='1'>" + answer2 + "<br>");
+            questionsPage.append("<input type='radio' name='choices' value='2'>" + answer3 + "<br>");
+            questionsPage.append("<input type='radio' name='choices' value='3'>" + answer4 + "<br><br>");
        
         }
 
-        // var doneButton = ('<button class="btn btn-danger btn-lg" id="done" type="submit">Done</button>');
+        //this adds the done button to end of the page 
         questionsPage.append("<button class='btn btn-danger btn-lg' id='done'>Done</button>");
+
+        //goes to the results end page when done button is clicked
         $("#done").on("click", function() {
-            stopGame();
+            
+            // stopGame();
             showEndPage();
+            checkAnswer();
         });
     });
+//// END OF MAIN GAME FUNCTION
 
 //starts timer
     function startTimer() {
@@ -133,17 +142,24 @@ var gameQuestions = [{
 
 //decreases the amount of time on the timer
     function decrement() {
+        // -- tells the times to count down
         timerNumber--;
 
+        //variable for our converted time to match our timerNumber variable
         var timeConverted = time_converter(timerNumber);
+
+        //displays the timer to the page
         $("#timer").html('<h2>Time: ' + timeConverted + '</h2>');
 
+        // if the time equals zero it will take player to results end page
         if (timerNumber === 0) {
             stopGame();
             showEndPage();
+            checkAnswer();
         }
     }
 
+    // this converts our time to minutes and seconds
     function time_converter(t) { 
       var minutes = Math.floor(t / 60);
       var seconds = t - (minutes * 60);
@@ -166,9 +182,28 @@ var gameQuestions = [{
         clearInterval(interval);
     }
 
+    function checkAnswer() {
+
+        for (var i = 0; i < gameQuestions.length; i++) {
+
+            correctChoice = gameQuestions[i].correctAnswer;
+            userChoice = $("input[name=choices]:checked").val();
+
+            if (userChoice === correctChoice) {
+                rightAnswers++;
+            }
+            else if (userChoice !== correctChoice) {
+                wrongAnswers++;
+            }
+            else if (userChoice === undefined) {
+                unanswered++;
+            }
+        }
+    }
+
     function showEndPage() {
 
-        //hides all questions
+        //hides questions page
         $("#questions-page").hide();
 
         //shows end page with results
