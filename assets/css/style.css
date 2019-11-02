@@ -1,11 +1,16 @@
 body {
-    background-image: url(../images/mistletoe.jpg);
+    background-image: url(../images/decorations.jpg);
     background-size: 100%;
+}
+
+.audio {
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
 .jumbotron {
     background-color: #2a580b;
-    margin-top: 10%;
+    margin-top: 7%;
     color: #fff9e9;
 }
 
@@ -14,23 +19,36 @@ h1 {
     text-align: center;
 }
 
-#start-button, #done-button {
+#start-button {
     font-family: 'Lobster', cursive;
     color: #fff9e9;
-    font-size: 200%;
+    font-size: 40px;
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
+    margin-top: 35px;
+    margin-left: 45%;
 }
+
+#done {
+    font-family: 'Lobster', cursive;
+    color: #fff9e9;
+    font-size: 30px;
+}
+
+#timer {
+    color: rgb(230, 0, 0);
+}
+
 p {
     color: #fff9e9;
 }
 
 /*tags from javascript*/
 #question {
-    font-size: 25px;
+    font-size: 19px;
 }
 
 h2, h3 {
@@ -38,7 +56,7 @@ h2, h3 {
     text-align: center;
 }
 
-.answer-check {
+.answer-check-input {
     margin-left: 20px;
 }
 
