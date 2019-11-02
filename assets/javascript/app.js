@@ -205,12 +205,12 @@ var gameQuestions = [{
 
         for (var i = 0; i < gameQuestions.length; i++) {
             correctChoice = gameQuestions[i].correctAnswer;
-            userChoice = $('input[id=radio'+i+']:checked').text();
+            userChoice = $('input[id=radio'+i+']:checked + label').text();
             if (userChoice === correctChoice) {
               rightAnswers++;
             } else if (userChoice !== correctChoice) {
                 wrongAnswers++;
-            } else if (userChoice === "") {
+            } else if (userChoice === undefined) {
                 unanswered++;
             } 
         }
