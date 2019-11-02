@@ -1,10 +1,12 @@
-$(document).ready(function() {
+//$(document).ready(function() {
 
-var correctChoice;
-var userChoice;
 var rightAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
+
+var correctChoice;
+var userChoice;
+
 var interval;
 var timerNumber = 300;
 
@@ -83,7 +85,7 @@ var gameQuestions = [{
             correctAnswer: 2 // germany is at index 2
         }];
 
-    
+
 //// START OF MAIN GAME FUNCTION
     $("#start-button").on("click", function() {
 
@@ -98,7 +100,7 @@ var gameQuestions = [{
         var questionsPageOpener = $("#questions-page-opener");
 
         //adds the following words to screen when start button is pressed
-        questionsPageOpener.append('<h3>Answer the following questions:</h3>');
+        questionsPageOpener.append('<h3>Answer the following questions:</h3><hr>');
 
     //loops and prints all of the questions from the array
         for (var i = 0; i < gameQuestions.length; i++) {
@@ -113,10 +115,10 @@ var gameQuestions = [{
             var answer4 = gameQuestions[i].answerChoices[3];
 
             //this displays all answer options to page and displays them with a selector
-            questionsPage.append("<input type='radio' name='choices' value='0'>" + answer1 + "<br>");
-            questionsPage.append("<input type='radio' name='choices' value='1'>" + answer2 + "<br>");
-            questionsPage.append("<input type='radio' name='choices' value='2'>" + answer3 + "<br>");
-            questionsPage.append("<input type='radio' name='choices' value='3'>" + answer4 + "<br><br>");
+            questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer1 + "</label><br>");
+            questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer2 + "</label><br>");
+            questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer3 + "</label><br>");
+            questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer4 + "</label><br><br>");
        
         }
 
@@ -127,15 +129,15 @@ var gameQuestions = [{
         $("#done").on("click", function() {
             
             // stopGame();
-            showEndPage();
             checkAnswer();
+            showEndPage();
         });
     });
 //// END OF MAIN GAME FUNCTION
 
-//starts timer
-    function startTimer() {
-        
+
+// //starts timer
+    function startTimer() {      
         clearInterval(interval);
         interval = setInterval(decrement, 1000);
     }
@@ -153,8 +155,9 @@ var gameQuestions = [{
 
         // if the time equals zero it will take player to results end page
         if (timerNumber === 0) {
+            
             stopGame();
-            showEndPage();
+
             checkAnswer();
         }
     }
@@ -180,38 +183,40 @@ var gameQuestions = [{
     //stops timer and clears it if runs out or user is done
     function stopGame() {
         clearInterval(interval);
-    }
+    }     
 
-    function checkAnswer() {
-
-        for (var i = 0; i < gameQuestions.length; i++) {
-
-            correctChoice = gameQuestions[i].correctAnswer;
-            userChoice = $("input[name=choices]:checked").val();
-
-            if (userChoice === correctChoice) {
-                rightAnswers++;
-            }
-            else if (userChoice !== correctChoice) {
-                wrongAnswers++;
-            }
-            else if (userChoice === undefined) {
-                unanswered++;
-            }
-        }
-    }
 
     function showEndPage() {
-
         //hides questions page
         $("#questions-page").hide();
 
         //shows end page with results
         $("#results-text").html("<h3>All done! Here are your results: </h2>");
-        $("#right-answers").text("Correct: " + rightAnswers);
-        $("#wrong-answers").text("Incorrect: " + wrongAnswers);
-        $("#unanswered-questions").text("Unanswered: " + unanswered);
+        $("#right-answers").html("Correct: " + rightAnswers);
+        $("#wrong-answers").html("Incorrect: " + wrongAnswers);
+        $("#unanswered-questions").html("Unanswered: " + unanswered);
     }
 
 
-});
+    function checkAnswer() {
+
+        var correctChoice;
+        var userChoice;
+
+        for (var i = 0; i < gameQuestions.length; i++) {
+            correctChoice = gameQuestions[i].correctAnswer;
+            userChoice = $('input[id=radio'+i+']:checked').text();
+            if (userChoice === correctChoice) {
+              rightAnswers++;
+            } 
+            else if (userChoice !== correctChoice) {
+                wrongAnswers++;
+            }
+            else if (userChoice === "") {
+                unanswered++;
+            } 
+        }
+    }
+
+
+//});
