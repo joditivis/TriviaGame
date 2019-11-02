@@ -7,11 +7,11 @@ body {
     background-color: #2a580b;
     margin-top: 10%;
     color: #fff9e9;
-    text-align: center;
 }
 
 h1 {
     font-family: 'Lobster', cursive;
+    text-align: center;
 }
 
 #start-button, #done-button {
@@ -22,6 +22,7 @@ h1 {
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
+    text-align: center;
 }
 p {
     color: #fff9e9;
@@ -29,6 +30,18 @@ p {
 
 /*tags from javascript*/
 #question {
-    font-size: 18px;
+    font-size: 25px;
+}
 
+h2, h3 {
+    font-family: 'Lobster', cursive;
+    text-align: center;
+}
+
+.answer-check {
+    margin-left: 20px;
+}
+
+.answer-check-label {
+    padding: 6px;
 }
