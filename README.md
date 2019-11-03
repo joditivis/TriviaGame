@@ -1,5 +1,5 @@
 # Trivia Game
-**Link to Game: **
+**Link to Game: https://joditivis.github.io/TriviaGame/**
 
 # About:
 University of Denver Coding Boot Camp fifth week assignment: This assigmnet required us to create a Trivia Game using JavaScript and jQuery.
