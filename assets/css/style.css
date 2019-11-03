@@ -42,6 +42,7 @@ p {
     text-align: center;
     color: #ffffff;
     font-family: 'Didact Gothic', sans-serif;
+    font-size: 22px;
 }
 
 #start-button {
@@ -54,12 +55,12 @@ p {
     padding-bottom: 1%;
     text-align: center;
     margin-top: 35px;
-    margin-left: 22rem;
 }
 
-/*hr {
-    border: 1px solid #fff9e9;
-}*/
+.btn {
+    display: block;
+    margin: auto;
+}
 
 #done {
     font-family: 'Courgette', cursive;
