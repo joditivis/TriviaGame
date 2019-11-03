@@ -73,24 +73,26 @@ p {
 
 /*tags from javascript*/
 #question {
-    font-size: 19px;
-    margin-left: 55px;
+    font-size: 23px;
+    margin-left: 45px;
     color: #ffffff;
     font-family: 'Didact Gothic', sans-serif;
 }
 
 .answer-check-input {
-    margin-left: 60px;
+    margin-left: 45px;
 }
 
 .answer-check-label {
     padding: 6px;
     color: #ffffff;
     font-family: 'Didact Gothic', sans-serif;
+    font-size: 19px;
 }
 
 #end-page {
     font-size: 24px;
+    text-align: center;
     font-family: 'Didact Gothic', sans-serif;
     color: #ffffff;
     margin-left: 55px;
