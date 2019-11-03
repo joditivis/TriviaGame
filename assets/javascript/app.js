@@ -103,13 +103,13 @@ var gameQuestions = [{
         var questionsPageOpener = $("#questions-page-opener");
 
         //adds the following words to screen when start button is pressed
-        questionsPageOpener.append('<h4>Answer the following questions:</h4><hr>');
+        questionsPageOpener.append('<h1>&#9924;</h1><hr>');
 
     //loops and prints all of the questions from the array
         for (var i = 0; i < gameQuestions.length; i++) {
 
             //this displays all questions to the page
-            questionsPage.append('<div id="question">' + gameQuestions[i].question + '</div>');
+            questionsPage.append('<div id="question">' + "❄ " + gameQuestions[i].question + '</div>');
 
             //variables for each answer option
             var answer1 = gameQuestions[i].answerChoices[0];
@@ -118,11 +118,13 @@ var gameQuestions = [{
             var answer4 = gameQuestions[i].answerChoices[3];
 
             //this displays all answer options to page and displays them with a selector
+            //input type tells us what kind of input we want- in this case we want the radio form selector
+            //name attribute references the form data for passing the values of the selected radio
             questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer1 + "</label><br>");
             questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer2 + "</label><br>");
             questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer3 + "</label><br>");
             questionsPage.append("<input type='radio' class='answer-check-input' name='radio-group"+i+"' id='radio"+i+"'><label class='answer-check-label'>" + answer4 + "</label><br><br>");
-       
+
         }
 
         //this adds the done button to end of the page 
@@ -131,7 +133,6 @@ var gameQuestions = [{
         //goes to the results end page when done button is clicked
         $("#done").on("click", function() {
             
-            // stopGame();
             checkAnswer();
             showEndPage();
         });
@@ -145,6 +146,7 @@ var gameQuestions = [{
 //TIMER FUNCTIONS
     function startTimer() {      
         clearInterval(interval);
+        //this tells the timer to be decremeanted by 1 second
         interval = setInterval(decrement, 1000);
     }
 
@@ -157,13 +159,12 @@ var gameQuestions = [{
         var timeConverted = time_converter(timerNumber);
 
         //displays the timer to the page
-        $("#timer").html('<h3>Time: ' + timeConverted + '</h3><br>');
+        $("#timer").html('<h3>Time: ' + timeConverted + '</h3>');
 
         // if the time equals zero it will take player to results end page
         if (timerNumber === 0) {
             
             stopGame();
-
             checkAnswer();
         }
     }
@@ -200,10 +201,10 @@ var gameQuestions = [{
         $("#questions-page").hide();
 
         //shows end page with results
-        $("#results-text").html("<h3>All done! Here are your results: </h2>");
-        $("#right-answers").html("Correct: " + rightAnswers);
-        $("#wrong-answers").html("Incorrect: " + wrongAnswers);
-        $("#unanswered-questions").html("Unanswered: " + unanswered);
+        $("#results-text").html("<h2> </h2>");
+        $("#right-answers").html("❄ Correct: " + rightAnswers);
+        $("#wrong-answers").html("❄ Incorrect: " + wrongAnswers);
+        $("#unanswered-questions").html("❄ Unanswered: " + unanswered);
     }
 
 
@@ -212,19 +213,28 @@ var gameQuestions = [{
 
     function checkAnswer() {
 
+        //variables to hold values within for loop for easier reading
         var correctChoice;
         var userChoice;
 
+        //this for loop will loop through the questions array 
         for (var i = 0; i < gameQuestions.length; i++) {
+
+            //this accesses the correct answer from whichever game question we are on
             correctChoice = gameQuestions[i].correctAnswer;
+            
+            // stores players choice for each answer selected to be determined if correct or incorrect
             userChoice = $('input[id=radio'+i+']:checked + label').text();
-            if (userChoice === correctChoice) {
-              rightAnswers++;
-            } else if (userChoice !== correctChoice) {
-                wrongAnswers++;
-            } else if (userChoice === undefined) {
+            if (userChoice === "") {
                 unanswered++;
+            }
+            else if (userChoice === correctChoice) {
+              rightAnswers++;
             } 
+            else {
+                wrongAnswers++;
+            }
+            
         }
     }
 
