@@ -166,6 +166,7 @@ var gameQuestions = [{
             
             stopGame();
             checkAnswer();
+            showEndPage();
         }
     }
 
