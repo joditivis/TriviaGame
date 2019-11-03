@@ -11,77 +11,90 @@ body {
     margin-top: 15px;
     text-align: center;
     padding: 1rem;
-    font-family: 'Lobster', cursive;
     color: #fff9e9
 }
 .audio-text {
     padding-bottom: 3px;
     font-size: 21px;
-    color: #fff9e9
+    color: #ffffff;
+    font-family: 'Courgette', cursive;
 }
 
 .jumbotron {
     background-color: #2a580b;
     margin-top: 7%;
-    color: #fff9e9;
+    /*color: #fff9e9;*/
 }
 
 h1 {
-    font-family: 'Lobster', cursive;
+    /*font-family: 'Lobster', cursive;*/
     text-align: center;
 }
 
 .display-4 {
     font-size: 60px;
+    color: #ffffff;
+    text-shadow: 2px 2px #bd0000;
+    font-family: 'Courgette', cursive;
+}
+
+p {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Didact Gothic', sans-serif;
 }
 
 #start-button {
-    font-family: 'Lobster', cursive;
-    color: #fff9e9;
-    font-size: 40px;
+    font-family: 'Courgette', cursive;
+    color: #ffffff;
+    font-size: 35px;
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
     text-align: center;
     margin-top: 35px;
-    margin-left: 45%;
+    margin-left: 22rem;
 }
 
+/*hr {
+    border: 1px solid #fff9e9;
+}*/
+
 #done {
-    font-family: 'Lobster', cursive;
-    color: #fff9e9;
+    font-family: 'Courgette', cursive;
+    color: #ffffff;
     font-size: 30px;
+    margin-left: 70px;
 }
 
 #timer {
-    color: #bd0000;
-}
-
-p {
-    color: #fff9e9;
+    color: #ffffff;
+    font-family: 'Courgette', cursive;
+    text-align: center;
 }
 
 /*tags from javascript*/
 #question {
     font-size: 19px;
-}
-
-h4, h3 {
-    font-family: 'Lobster', cursive;
-    text-align: center;
+    margin-left: 55px;
+    color: #ffffff;
+    font-family: 'Didact Gothic', sans-serif;
 }
 
 .answer-check-input {
-    margin-left: 20px;
+    margin-left: 60px;
 }
 
 .answer-check-label {
     padding: 6px;
+    color: #ffffff;
+    font-family: 'Didact Gothic', sans-serif;
 }
 
 #end-page {
-    text-align: center;
     font-size: 24px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Didact Gothic', sans-serif;
+    color: #ffffff;
+    margin-left: 55px;
 }
