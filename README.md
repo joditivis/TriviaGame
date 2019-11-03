@@ -17,7 +17,7 @@ University of Denver Coding Boot Camp fifth week assignment: This assigmnet requ
 * Google Fonts
 * JavaScript
 * jQuery
-* Song by Bing Cosby found on https://mp3direct.org/
+* Music: Let It Snow by Bing Cosby found on https://mp3direct.org/
 
 # Features:
-![Image](assets/images/pagescreenshot.png)
+![Image](assets/images/page.png)
